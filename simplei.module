@@ -11,7 +11,7 @@
 function simplei_init() {
   if (module_exists('admin_menu') and user_access('access administration menu')) {
     list($color, $text) = explode(' ', str_replace('  ', ' ', $GLOBALS['conf']['simple_environment_indicator']));
-    $text  = $text  ? $text  : 'See REAME.txt of simplei module!';
+    $text  = $text  ? $text  : 'See README.txt of simplei module!';
     $color = $color ? $color : 'DarkRed';
     $css   = "
       #admin-menu { background: $color; }
