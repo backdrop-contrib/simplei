@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Environment indicator very light.
+ */
+
+/**
+ * Implements hook_init().
+ */
+function simplei_init() {
+  if (module_exists('admin_menu') and user_access('access administration menu')) {
+    list($color, $text) = explode(' ', str_replace('  ', ' ', $GLOBALS['conf']['simple_environment_indicator']));
+    $text  = $text  ? $text  : 'See REAME.txt of simplei module!';
+    $color = $color ? $color : 'DarkRed';
+    $css   = "
+      #admin-menu { background: $color; }
+      #admin-menu .dropdown .admin-menu-icon > a span { display: none; }
+      #admin-menu .dropdown .admin-menu-toolbar-category > a.active-trail { background: none; }
+      #admin-menu .dropdown .admin-menu-icon > a:before { content: '$text'; }";
+
+    drupal_add_css($css, 'inline');
+  }
+}

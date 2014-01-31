@@ -1,0 +1,5 @@
+name = Simple Environment Indicator
+description = Environment Indicator, Super Light.
+core = 7.x
+
+dependencies[] = admin_menu
