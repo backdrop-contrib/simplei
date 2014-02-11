@@ -32,6 +32,8 @@ function simplei_init() {
       }
     }
 
-    drupal_add_css($css, array('type' => 'inline', 'weight' => 10));
+    if (!empty($css)) {
+      drupal_add_css($css, array('type' => 'inline', 'weight' => 10));
+    }
   }
 }
