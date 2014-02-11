@@ -2,23 +2,36 @@
 
 /**
  * @file
- * Environment indicator very light.
+ * Simple Environment indicator.
  */
 
 /**
  * Implements hook_init().
  */
 function simplei_init() {
-  if (module_exists('admin_menu') and user_access('access administration menu')) {
-    list($color, $text) = explode(' ', str_replace('  ', ' ', $GLOBALS['conf']['simple_environment_indicator']));
-    $text  = $text  ? $text  : 'See README.txt of simplei module!';
-    $color = $color ? $color : 'DarkRed';
-    $css   = "
-      #admin-menu { background: $color; }
-      #admin-menu .dropdown .admin-menu-icon > a span { display: none; }
-      #admin-menu .dropdown .admin-menu-toolbar-category > a.active-trail { background: none; }
-      #admin-menu .dropdown .admin-menu-icon > a:before { content: '$text'; }";
+  global $conf;
 
-    drupal_add_css($css, 'inline');
+  if (!empty($conf['simple_environment_indicator'])) {
+    // $indicator[0] = indicator color, $indicator[1] = indicator text
+    $indicator = explode(' ', str_replace('  ', ' ', $conf['simple_environment_indicator']), 2);
+
+    if (module_exists('toolbar') and user_access('access toolbar')) {
+      $css = "#toolbar div.toolbar-menu { background: $indicator[0]; }";
+
+      if (!empty($indicator[1])) {
+        $css .= "#toolbar-home a span { display: none; }";
+        $css .= "#toolbar-home a:before { content: '$indicator[1]'; }";
+      }
+    }
+    elseif (module_exists('admin_menu') and user_access('access administration menu')) {
+      $css = "#admin-menu { background: $indicator[0]; }";
+
+      if (!empty($indicator[1])) {
+        $css .= "#admin-menu .dropdown .admin-menu-icon > a span { display: none; }";
+        $css .= "#admin-menu .dropdown .admin-menu-icon > a:before { content: '$indicator[1]'; }";
+      }
+    }
+
+    drupal_add_css($css, array('type' => 'inline', 'weight' => 10));
   }
 }

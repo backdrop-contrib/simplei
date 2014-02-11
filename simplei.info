@@ -2,5 +2,3 @@ name = Simple Environment Indicator
 description = Environment Indicator, Super Light.
 package = Administration
 core = 7.x
-
-dependencies[] = admin_menu
