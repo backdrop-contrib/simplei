@@ -1,4 +1,5 @@
 name = Simple Environment Indicator
 description = Environment Indicator, Super Light.
 package = Administration
-core = 7.x
+backdrop = 1.x
+type = module

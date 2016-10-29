@@ -12,28 +12,35 @@ function simplei_init() {
   global $conf;
 
   if (!empty($conf['simple_environment_indicator'])) {
-    // $indicator[0] = indicator color, $indicator[1] = indicator text
     $indicator = explode(' ', str_replace('  ', ' ', $conf['simple_environment_indicator']), 2);
 
-    if (module_exists('toolbar') and user_access('access toolbar')) {
-      $css = "#toolbar div.toolbar-menu { background: $indicator[0]; }";
+    if (module_exists('admin_bar') and user_access('access administration bar')) {
+      $css = "#admin-bar { background: $indicator[0]; }";
 
       if (!empty($indicator[1])) {
-        $css .= "#toolbar-home a span { display: none; }";
-        $css .= "#toolbar-home a:before { content: '$indicator[1]'; }";
+        $css .= "#admin-bar .dropdown .admin-bar-icon > a span { display: none; }";
+        $css .= "#admin-bar .dropdown .admin-bar-icon > a:before { content: '$indicator[1]'; }";
       }
-    }
-    elseif (module_exists('admin_menu') and user_access('access administration menu')) {
-      $css = "#admin-menu { background: $indicator[0]; }";
-
-      if (!empty($indicator[1])) {
-        $css .= "#admin-menu .dropdown .admin-menu-icon > a span { display: none; }";
-        $css .= "#admin-menu .dropdown .admin-menu-icon > a:before { content: '$indicator[1]'; }";
+      if (!empty($css)) {
+        backdrop_add_css($css, array('type' => 'inline', 'weight' => 10));
       }
-    }
-
-    if (!empty($css)) {
-      drupal_add_css($css, array('type' => 'inline', 'weight' => 10));
+      
+      $js_settings = array(
+        'simplei' => array(
+          'addFavicon' => TRUE,
+          // Get the first letter out of the name.
+          'faviconLabel' => $indicator[1]{0},
+          'faviconColor' => $indicator[0],
+          'faviconTextColor' => '#ffffff',
+        ),
+      );
+      backdrop_add_js($js_settings, 'setting');
+      backdrop_add_js(backdrop_get_path('module', 'simplei') . '/js/tinycon.min.js', array(
+        'every_page' => TRUE,
+      ));
+      backdrop_add_js(backdrop_get_path('module', 'simplei') . '/js/simplei.js', array(
+        'every_page' => TRUE,
+      ));
     }
   }
 }

@@ -1,7 +1,10 @@
---- Usage ---
+Simple Environment Indicator
+============================
 
-1. Enable the module like any other. The module works with either Drupal core
-   Toolbar module or Admin menu module.
+Usage
+-----
+
+1. Enable the module like any other. The module works with the core Admin Bar module.
 
 2. Enter a line like the example in your settings.php file.
 
@@ -14,9 +17,10 @@
    The color name (or hex value) is optionally followed by indicator text.
    The text appears in the far left of the menu bar.
 
-3. The indicator appears only when Toolbar or Admin Menu is showing.
+3. The indicator appears only when the Admin Bar is showing.
 
---- Settings suggestion ---
+Settings suggestion
+-------------------
 
 For production
    $conf['simple_environment_indicator'] = 'FireBrick PRD';
