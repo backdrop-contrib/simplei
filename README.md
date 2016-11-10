@@ -9,11 +9,11 @@ Usage
 
 2. Enter a line like the example in your settings.php file.
 
-   `$conf['simple_environment_indicator'] = 'DodgerBlue';`
+   `$settings['simple_environment_indicator'] = 'DodgerBlue';`
 
    or
 
-   `$conf['simple_environment_indicator'] = '#1E90FF DEV';`
+   `$settings['simple_environment_indicator'] = '#1E90FF DEV';`
 
    The color name (or hex value) is optionally followed by indicator text.
    The text appears in the far left of the menu bar.
@@ -25,24 +25,23 @@ Settings suggestion
 
 For production
 ```
-$conf['simple_environment_indicator'] = 'FireBrick PRD';
+$settings['simple_environment_indicator'] = 'FireBrick PRD';
 ```
 
 For staging
 ```
-$conf['simple_environment_indicator'] = 'GoldenRod STG';
+$settings['simple_environment_indicator'] = 'GoldenRod STG';
 ```
 
 For local development
 ```
-$conf['simple_environment_indicator'] = 'DodgerBlue DEV';
+$settings['simple_environment_indicator'] = 'DodgerBlue DEV';
 ```
 
 License
 -------
 
-This project is GPL v2 software. See the LICENSE.txt file in this directory for
-complete text.
+This project is GPL v2 software. See the LICENSE.txt file in this directory for complete text.
 
 Maintainers
 -----------
