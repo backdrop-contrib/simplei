@@ -18,7 +18,7 @@ function simplei_init() {
 
       if (!empty($indicator[1])) {
         $css .= "#admin-bar .dropdown .admin-bar-icon > a span { display: none; }";
-        $css .= "#admin-bar .dropdown .admin-bar-icon > a:before { content: '$indicator[1]'; }";
+        $css .= "#admin-bar .dropdown .admin-bar-icon > a:before { content: '$indicator[1]'; padding-right: 7px; }";
       }
       if (!empty($css)) {
         backdrop_add_css($css, array('type' => 'inline', 'weight' => 10));
