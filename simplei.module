@@ -28,7 +28,7 @@ function simplei_init() {
         'simplei' => array(
           'addFavicon' => TRUE,
           // Get the first letter out of the name.
-          'faviconLabel' => $indicator[1]{0},
+          'faviconLabel' => $indicator[1][0],
           'faviconColor' => $indicator[0],
           'faviconTextColor' => '#ffffff',
         ),
