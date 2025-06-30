@@ -20,24 +20,27 @@ Usage
    The text appears in the far left of the menu bar.
 
 3. The indicator appears only when the Admin Bar is showing. If the indicator should appear in the favicon even if a user doesn't have access to the Admin Bar, add this line to your settings.php file:
-   
+
    `$settings['simple_environment_favicon'] = TRUE;`
 
 Settings suggestion
 -------------------
 
 For production
-```
+
+```php
 $settings['simple_environment_indicator'] = 'FireBrick PRD';
 ```
 
 For staging
-```
+
+```php
 $settings['simple_environment_indicator'] = 'GoldenRod STG';
 ```
 
 For local development
-```
+
+```php
 $settings['simple_environment_indicator'] = 'DodgerBlue DEV';
 ```
 
