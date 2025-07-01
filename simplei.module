@@ -9,10 +9,10 @@
  */
 function simplei_init() {
   $simple_environment_indicator = settings_get('simple_environment_indicator');
-  $admin_bar_access = module_exists('admin_bar') && user_access('access administration bar');
-  $simple_environment_favicon = settings_get('simple_environment_favicon', FALSE);
 
   if (!empty($simple_environment_indicator)) {
+    $admin_bar_access = module_exists('admin_bar') && user_access('access administration bar');
+    $simple_environment_favicon = settings_get('simple_environment_favicon', FALSE);
     $indicator = explode(' ', str_replace('  ', ' ', $simple_environment_indicator), 2);
 
     // Manipulate favicon.
@@ -37,7 +37,7 @@ function simplei_init() {
 
     // Change the admin bar's style.
     if ($admin_bar_access && !empty($indicator[0])) {
-      $css = "#admin-bar { background: $indicator[0]; }";
+      $css = "#admin-bar { --simplei-background-color: $indicator[0]; background: var(--simplei-background-color); }";
 
       if (!empty($indicator[1])) {
         $css .= "#admin-bar .dropdown .admin-bar-icon > a .admin-bar-link-text:before { content: '$indicator[1]'; padding-right: 7px; }";
