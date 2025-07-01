@@ -37,7 +37,7 @@ function simplei_init() {
 
     // Change the admin bar's style.
     if ($admin_bar_access && !empty($indicator[0])) {
-      $css = ":root { --simplei-background-color: $indicator[0]; }";
+      $css = "#admin-bar { --simplei-background-color: $indicator[0]; }";
       $css .= "#admin-bar { background: var(--simplei-background-color); }";
 
       if (!empty($indicator[1])) {
